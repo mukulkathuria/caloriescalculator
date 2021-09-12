@@ -10,16 +10,13 @@ router.post("/user/register", async (req, res, next) => {
   if (emailExist)
     return res.status(422).json({ message: "Email already Exist" });
 
-    const { error } = validatesignup(req.body);
-    if(error) return res.status(422).json({ message: error });
-    
+  const { error } = validatesignup(req.body);
+  if (error) return res.status(422).json({ message: error });
+
   //Hashed Password
-  try{
-      const { token , refreshToken } = await registerController(req.body);
-    res.send({
-      status: "success",
-      data: { access_token: token, refresh_token: refreshToken },
-    });
+  try {
+    const { token, refreshToken } = await registerController(req.body);
+    res.json({ access_token: token, refresh_token: refreshToken });
   } catch (err) {
     if (err) {
       throw new Error("Data is not saved to mongodb");

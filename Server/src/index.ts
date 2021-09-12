@@ -3,10 +3,16 @@ import { connect as mongooseconnect } from "mongoose";
 import { DB_LINK } from "./Constants/constants";
 import registerroute from "./Routes/register";
 import loginroute from "./Routes/login";
+import cors from "cors";
 
 (async () => {
   const app = express();
   app.use(express.json());
+  app.use(
+    cors({
+      origin: "http://localhost:3000",
+    })
+  );
   app.use(registerroute);
   app.use(loginroute);
 
