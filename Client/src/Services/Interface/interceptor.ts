@@ -72,7 +72,7 @@ axios.interceptors.response.use(undefined, (err) => {
     isRefreshing = true;
 
     return new Promise((resolve, reject) => {
-      const setRefUrl = BASE_URL + '/refresh_token';
+      const setRefUrl = BASE_URL + 'refresh_token';
       axios
         .post(setRefUrl, {
           refresh_token: refreshToken

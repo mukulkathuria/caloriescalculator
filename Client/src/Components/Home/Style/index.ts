@@ -3,11 +3,11 @@ import styled from 'styled-components';
 export const MainDiv = styled.div``;
 
 export const HeaderDiv = styled.div`
-    width: 100%;
+  width: 100%;
 `;
 
 export const LogOutBtn = styled.button`
-    align: left;
+  align: left;
 `;
 
 export const Header = styled.header`
@@ -26,9 +26,9 @@ export const DivContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  a{
-    text-decoration:none;
-    color:inherit;
+  a {
+    text-decoration: none;
+    color: inherit;
   }
 `;
 export const Logo = styled.div`
@@ -66,12 +66,14 @@ export const Icons = styled.div`
 export const Userinfo = styled.span`
   position: relative;
   cursor: pointer;
-  img{
-    border-radius:50%;
+  img {
+    border-radius: 50%;
   }
 `;
 export const AccountDetails = styled.div`
   position: absolute;
   z-index: 15;
-  background-color:blue;
+  background-color: blue;
 `;
+
+export const MainHomeDiv = styled.div``;
