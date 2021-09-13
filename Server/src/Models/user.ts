@@ -22,8 +22,8 @@ const Users = new Schema<UserDto>({
   calories: [
     {
       _id: {
-        type: Schema.Types.ObjectId,
-        default: new Types.ObjectId(),
+        type: Types.ObjectId,
+        required: true,
       },
       desc: {
         type: String,

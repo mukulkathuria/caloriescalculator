@@ -23,7 +23,7 @@ export function caloryReducer(state = initialValues, action: CaloryActionDto) {
     case ADD_NEW_DATA:
       return {
         ...state,
-        calories: state.calories?.push(action.payload)
+        calories: action.payload
       };
 
     case EDIT_DATA:

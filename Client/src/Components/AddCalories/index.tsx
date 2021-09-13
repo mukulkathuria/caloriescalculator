@@ -1,16 +1,22 @@
 import { Form, Formik, FormikHelpers } from 'formik';
 import React, { memo } from 'react';
+import { useDispatch } from 'react-redux';
 import FormControl from '../FormControl';
 import { initialValues, validate, initials } from './Controls';
 
 const AddCalories = memo(() => {
+  const dispatch = useDispatch();
   const onSubmitting = async (
     values: initials,
     submitprops: FormikHelpers<initials>
   ) => {
     try {
-      const { getLogin } = await import('../../Services/Login');
-      //   await getLogin(values);
+      const { addCalories } = await import(
+        '../../Redux/Reducers/caoriesReducer.actions'
+      );
+      dispatch(addCalories(values));
+      submitprops.resetForm();
+      submitprops.setSubmitting(false);
     } catch (err: any) {
       submitprops.setSubmitting(false);
       if (!err.response) {

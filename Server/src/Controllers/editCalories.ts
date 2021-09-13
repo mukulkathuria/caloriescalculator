@@ -6,10 +6,10 @@ import { getCalories } from "./getCalories";
 import dayjs from "dayjs";
 
 export async function editCalories(params: editCaloriesData, user: tokenuser) {
-  const id = new Types.ObjectId(params.objid);
+    const id = new Types.ObjectId(params.objid);
   try {
     await User.updateOne(
-      { email: user.email, "calories._id": id },
+      { email: user.email, "calories._id": params.objid },
       {
         $set: {
           "calories.$.desc": params.desc,

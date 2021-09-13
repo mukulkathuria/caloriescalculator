@@ -21,3 +21,9 @@ export type caloriesUserData = {
   desc: string;
   calories: number;
 };
+
+export type editCaloriesData = {
+    objid: string;
+    desc: string;
+    calories: number;
+}

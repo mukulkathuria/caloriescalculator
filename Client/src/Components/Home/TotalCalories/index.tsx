@@ -12,7 +12,7 @@ const TotalCalories: React.FC<TotalCal> = memo((props) => {
     import('../utils').then(({ getTotalCalories }) =>
       setCalories(() => getTotalCalories(props.cals))
     );
-  }, []);
+  },[props.cals]);
 
   return (
     <div>

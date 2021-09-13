@@ -9,7 +9,7 @@ export async function deleteCalory(param: string, user: tokenuser) {
   try {
     await User.updateOne(
       { email: user.email },
-      { $pull: { calories: { _id: id } } }
+      { $pull: { calories: { _id: param } } }
     );
     return { data: true };
   } catch (error) {
