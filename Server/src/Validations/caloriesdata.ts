@@ -1,5 +1,5 @@
 import { stringonlyregex } from "../Constants/regexs";
-import { CaloriesDataDto } from "../dto/calories.dto";
+import { CaloriesDataDto, editCaloriesData } from "../dto/calories.dto";
 
 export function validCalories(params: CaloriesDataDto) {
   if (!stringonlyregex.test(params.desc)) {
@@ -9,4 +9,11 @@ export function validCalories(params: CaloriesDataDto) {
     return { error: "Please specify valid calories" };
   }
   return { data: true };
+}
+
+export function valideditCalories(params:editCaloriesData){
+  if(!params.objid){
+    return { error: 'please specify valid id' }
+  }
+  return validCalories(params);
 }
