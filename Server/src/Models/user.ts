@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, Types } from "mongoose";
 import { UserDto } from "../dto/user.dto";
 
 const Users = new Schema<UserDto>({
@@ -19,6 +19,26 @@ const Users = new Schema<UserDto>({
     min: 3,
     max: 1024,
   },
+  calories: [
+    {
+      _id: {
+        type: Schema.Types.ObjectId,
+        default: new Types.ObjectId(),
+      },
+      desc: {
+        type: String,
+        required: true,
+      },
+      calories: {
+        type: Number,
+        required: true,
+      },
+      date: {
+        type: Date,
+        default: Date.now,
+      },
+    },
+  ],
   date: {
     type: Date,
     default: Date.now,

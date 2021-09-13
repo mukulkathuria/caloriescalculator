@@ -3,6 +3,7 @@ import { connect as mongooseconnect } from "mongoose";
 import { DB_LINK } from "./Constants/constants";
 import registerroute from "./Routes/register";
 import loginroute from "./Routes/login";
+import Calorieroute from "./Routes/calculatecalories";
 import cors from "cors";
 
 (async () => {
@@ -15,6 +16,7 @@ import cors from "cors";
   );
   app.use(registerroute);
   app.use(loginroute);
+  app.use("/api", Calorieroute);
 
   try {
     await mongooseconnect(DB_LINK);
