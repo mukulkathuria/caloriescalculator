@@ -6,6 +6,7 @@ import Loader from '../../Loader';
 const { default: Avatar } = require('../../../Assets/images/avatar.png');
 const UserDetails = lazy(() => import('../UserDetails'));
 
+const { default: logoImg } = require('../../../Assets/images/fitness.png');
 const HomeHeader = memo(() => {
   const [showAcc, hideAcc] = useState(() => false);
 
@@ -14,7 +15,7 @@ const HomeHeader = memo(() => {
       <DivContainer>
         <Logo>
           <Link to="/">
-            <img src="" alt="logo" />
+            <img src={logoImg} alt="logo" />
           </Link>
         </Logo>
         <Icons>

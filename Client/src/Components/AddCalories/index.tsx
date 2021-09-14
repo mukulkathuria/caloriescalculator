@@ -2,6 +2,7 @@ import { Form, Formik, FormikHelpers } from 'formik';
 import React, { memo } from 'react';
 import { useDispatch } from 'react-redux';
 import FormControl from '../FormControl';
+import { Subbtn } from './Styles';
 import { initialValues, validate, initials } from './Controls';
 
 const AddCalories = memo(() => {
@@ -46,12 +47,12 @@ const AddCalories = memo(() => {
               type="number"
               placeholder="Enter Calories"
             />
-            <button
+            <Subbtn
               type="submit"
               disabled={!formik.isValid || formik.isSubmitting}
             >
               {formik.isSubmitting ? 'Adding...' : 'Add Calories'}
-            </button>
+            </Subbtn>
           </Form>
         )}
       </Formik>

@@ -4,6 +4,8 @@ export const RecentComments = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 0.2px solid #f1f1f1;
+  margin: 20px 0;
 `;
 export const Comments = styled.div`
   a {
