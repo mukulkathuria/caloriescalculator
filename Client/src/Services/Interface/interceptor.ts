@@ -34,12 +34,18 @@ axios.interceptors.response.use(undefined, (err) => {
     return Promise.reject(err);
   }
   if (
-    (err?.response?.config?.url === BASE_URL + 'refresh_token' &&
+    (err?.response?.config?.url === BASE_URL + 'user/refreshtoken' &&
       err?.response?.status === 401) ||
+    err?.response?.status === 404 ||
     !token
   ) {
     localStorage.removeItem('x-token');
     localStorage.removeItem('qid');
+    import('../../Redux/store').then(({ default: { dispatch } }) =>
+      import('../../Redux/Reducers/userReducer.actions').then(({ logout }) =>
+        dispatch(logout())
+      )
+    );
   }
   const refreshToken = localStorage.getItem('qid');
   let exp = null;
@@ -72,10 +78,10 @@ axios.interceptors.response.use(undefined, (err) => {
     isRefreshing = true;
 
     return new Promise((resolve, reject) => {
-      const setRefUrl = BASE_URL + 'refresh_token';
+      const setRefUrl = BASE_URL + 'user/refreshtoken';
       axios
         .post(setRefUrl, {
-          refresh_token: refreshToken
+          token: refreshToken
         })
         .then(({ data: { access_token, refresh_token } }) => {
           axios.defaults.headers.common.Authorization =
@@ -88,6 +94,11 @@ axios.interceptors.response.use(undefined, (err) => {
         .catch((error) => {
           localStorage.removeItem('x-token');
           localStorage.removeItem('qid');
+          import('../../Redux/store').then(({ default: { dispatch } }) =>
+            import('../../Redux/Reducers/userReducer.actions').then(
+              ({ logout }) => dispatch(logout())
+            )
+          );
           processQueue(error, null);
           reject(error);
         })

@@ -4,6 +4,7 @@ import { DB_LINK } from "./Constants/constants";
 import registerroute from "./Routes/register";
 import loginroute from "./Routes/login";
 import Calorieroute from "./Routes/calculatecalories";
+import refreshroute from './Routes/refreshtoken';
 import cors from "cors";
 
 (async () => {
@@ -16,6 +17,7 @@ import cors from "cors";
   );
   app.use(registerroute);
   app.use(loginroute);
+  app.use(refreshroute);
   app.use("/api", Calorieroute);
 
   try {
